@@ -4,6 +4,7 @@ INPUT_CONFIG_PATH="$1"
 CONFIG=""
 
 echo "Debug $INPUT_CONFIG_PATH"
+
 # check if a custom config have been provided
 if [ -z "$1" ]; then
   echo "Yeah"
