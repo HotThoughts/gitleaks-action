@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INPUT_CONFIG_PATH="$1"
-CONFIG=""
+CONFIG=" --config-path=$GITHUB_WORKSPACE/.github/.gitleaks.toml"
 
 echo "Debug $INPUT_CONFIG_PATH"
 
