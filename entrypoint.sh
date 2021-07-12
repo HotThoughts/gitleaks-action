@@ -3,9 +3,13 @@
 INPUT_CONFIG_PATH="$1"
 CONFIG=""
 
+echo "Debug $INPUT_CONFIG_PATH"
 # check if a custom config have been provided
-if [ -f "$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH" ]; then
+if [ -z "$1" ]; then
+  echo "Yeah"
   CONFIG=" --config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH"
+else
+  echo "nNO!!!!!!!"
 fi
 
 echo running gitleaks "$(gitleaks --version) with the following command👇"
