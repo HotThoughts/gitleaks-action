@@ -5,7 +5,7 @@ CONFIG=""
 
 
 # check if a custom config have been provided
-if [ -z "$1" ]; then
+if [ !-z "$1" ]; then
   echo "Yeah"
   CONFIG=" --config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH"
 else
