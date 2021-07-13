@@ -6,6 +6,8 @@
 || CONFIG_PATH="$1" 
 
 
+[ ! -d "$1" ] && echo Error: $1 not found. Please check your config path. && exit 1
+
 CONFIG=" --config-path=$GITHUB_WORKSPACE/$CONFIG_PATH"
 
 echo running gitleaks "$(gitleaks --version) with the following command👇"
