@@ -1,16 +1,13 @@
 #!/bin/bash
 
 INPUT_CONFIG_PATH="$1"
-CONFIG=""
 
+echo "input config path $INPUT_CONFIG_PATH"
 
 # check if a custom config have been provided
-if [ !-z "$1" ]; then
-  echo "Yeah"
-  CONFIG=" --config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH"
-else
-  echo "nNO!!!!!!!"
-fi
+[ ! -z "$INPUT_CONFIG_PATH" ] && CONFIG="
+--config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH" \
+  || CONFIG=" --config-path=$GITHUB_WORKSPACE/.github/.gitleak.toml"
 
 echo running gitleaks "$(gitleaks --version) with the following command👇"
 
