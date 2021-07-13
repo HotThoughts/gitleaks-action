@@ -1,13 +1,12 @@
 #!/bin/bash
 
-INPUT_CONFIG_PATH="$1"
+# the default config path is .github/.gitleaks.toml
+# if a custom config is given, update it
+[ -z "$1" ] && CONFIG_PATH=".github/.gitleaks.toml" \
+|| CONFIG_PATH="$1" 
 
-echo "input config path $INPUT_CONFIG_PATH"
 
-# check if a custom config have been provided
-[ ! -z "$INPUT_CONFIG_PATH" ] && CONFIG="
---config-path=$GITHUB_WORKSPACE/$INPUT_CONFIG_PATH" \
-  || CONFIG=" --config-path=$GITHUB_WORKSPACE/.github/.gitleak.toml"
+CONFIG=" --config-path=$GITHUB_WORKSPACE/$CONFIG_PATH"
 
 echo running gitleaks "$(gitleaks --version) with the following command👇"
 
