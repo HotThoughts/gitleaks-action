@@ -6,7 +6,7 @@
 || CONFIG_PATH="$GITHUB_WORKSPACE/$1" 
 
 
-[ -d "$CONFIG_PATH" ] || (echo "::set-output name=exitcode::$CONFIG_PATH not found. Please check your config path."  && exit 1)
+[ -f "$CONFIG_PATH" ] || (echo "::set-output name=exitcode::$CONFIG_PATH not found. Please check your config path."  && exit 1)
 
 CONFIG=" --config-path=$CONFIG_PATH"
 
