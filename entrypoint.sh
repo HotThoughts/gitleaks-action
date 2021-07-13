@@ -6,7 +6,12 @@
 || CONFIG_PATH="$GITHUB_WORKSPACE/$1" 
 
 
-[ -f "$CONFIG_PATH" ] || (echo "::set-output name=exitcode::$CONFIG_PATH not found. Please check your config path."  && exit 1)
+if [ -f "$CONFIG_PATH" ]; then
+  echo "Use gitleaks config: $CONFIG_PATH"
+else
+  echo "::set-output name=exitcode::$CONFIG_PATH not found. Please check your config path."
+  exit 1
+fi
 
 CONFIG=" --config-path=$CONFIG_PATH"
 
