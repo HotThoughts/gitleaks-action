@@ -1,9 +1,8 @@
 #!/bin/bash
 
 INPUT_CONFIG_PATH="$1"
-CONFIG=" --config-path=$GITHUB_WORKSPACE/.github/.gitleaks.toml"
+CONFIG=""
 
-echo "Debug $INPUT_CONFIG_PATH"
 
 # check if a custom config have been provided
 if [ -z "$1" ]; then
