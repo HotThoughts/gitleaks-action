@@ -2,13 +2,13 @@
 
 # the default config path is .github/.gitleaks.toml
 # if a custom config is given, update it
-[ -z "$1" ] && CONFIG_PATH=".github/.gitleaks.toml" \
-|| CONFIG_PATH="$1" 
+[ -z "$1" ] && CONFIG_PATH="$GITHUB_WORKSPACE/.github/.gitleaks.toml" \
+|| CONFIG_PATH="$GITHUB_WORKSPACE/$1" 
 
 
-[ ! -d "$1" ] && echo Error: $1 not found. Please check your config path. && exit 1
+[ ! -d "$CONFIG_PATH" ] && echo "::set-output name=exitcode::$CONFIG_PATH not found. Please check your config path."  && exit 1
 
-CONFIG=" --config-path=$GITHUB_WORKSPACE/$CONFIG_PATH"
+CONFIG=" --config-path=$CONFIG_PATH"
 
 echo running gitleaks "$(gitleaks --version) with the following command👇"
 
